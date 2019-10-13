@@ -1,6 +1,6 @@
 name: Docker Image CI
 
-on: 
+on:
   push:
     branches:
     - master
@@ -9,13 +9,13 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
- 
+
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       env:
         TAG_NAME: "cdev:$(date +%s)"
-      run: 
+      run:
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker build . --file Dockerfile --tag ${{ TAG_NAME }}
-        docker push marshallasch/${{ TAG_NAME }}
+        docker build . --file Dockerfile --tag "${{ TAG_NAME }}""
+        docker push "marshallasch/${{ TAG_NAME }}""
