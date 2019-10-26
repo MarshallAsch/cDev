@@ -5,12 +5,13 @@ This docker container contains a bunch of the C development tools needed to buil
 On MacOS 10.14.6 `valgrind` and `gdb` do not work, so I have made this useful docker image where
 you can debug a C program from a directory on the host machine.
 
-This container is based on deban and contains:
+This container is based on Debian and contains:
 
 - gcc
 - gdb
 - make
 - valgrind
+- git
 
 
 ## Building
@@ -23,8 +24,11 @@ $  docker build -t cdev .
 
 ## Usage
 
+
+
 ```bash
-$ docker run -v <path to dir on host>:/root/myCode -it cdev /bin/bash
+$ docker pull marshallasch/cdev
+$ docker run -v <path to dir on host>:/root/myCode -it marshallasch/cdev /bin/bash
 ```
 
 
