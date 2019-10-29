@@ -1,5 +1,8 @@
 FROM debian
 
+WORKDIR /root
+
+VOLUME ["/root/code"]
 
 RUN apt-get update && \
   apt-get upgrade -y && \
@@ -10,3 +13,4 @@ RUN apt-get update && \
    valgrind \
    git
 
+WORKDIR /root/code
