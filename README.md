@@ -36,3 +36,38 @@ Where the `<path to dir on host>` is the directory that contains the code that y
 The folder will be mounted at `/root/myCode`. *NOTE: that any changes made to the files in the docker container
 will also be on the host machine.*
 
+
+
+## Alias function
+
+Here is a useful little bash function to save time when writing out the long command. You can put this in your `~/.bash_profile`
+file.
+
+
+```
+function cDev() {
+
+    PASSED=$1
+
+    echo ""
+
+    if [[ !  -d $PASSED ]]; then
+        echo "$PASSED  must be a directory"
+        return 1
+    fi
+
+    docker pull marshallasch/cdev
+
+    if [[ $? -ne 0 ]]; then
+        echo "Docker not running.... starting...."
+        open /Applications/Docker.app
+        sleep 5
+        docker pull marshallasch/cdev
+    fi
+
+    echo "starting c dev environment"
+
+    docker run -v "$PASSED:/root/code" -it marshallasch/cdev /bin/bash
+}
+```
+
