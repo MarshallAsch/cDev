@@ -8,6 +8,7 @@ you can debug a C program from a directory on the host machine.
 This container is based on Debian and contains:
 
 - gcc
+- g++
 - gdb
 - make
 - valgrind
@@ -28,12 +29,12 @@ $  docker build -t cdev .
 
 ```bash
 $ docker pull marshallasch/cdev
-$ docker run -v <path to dir on host>:/root/myCode -it marshallasch/cdev /bin/bash
+$ docker run -v <path to dir on host>:/code -it marshallasch/cdev
 ```
 
 
 Where the `<path to dir on host>` is the directory that contains the code that you wish to test.
-The folder will be mounted at `/root/myCode`. *NOTE: that any changes made to the files in the docker container
+The folder will be mounted at `/code`. *NOTE: that any changes made to the files in the docker container
 will also be on the host machine.*
 
 
@@ -67,7 +68,7 @@ function cDev() {
 
     echo "starting c dev environment"
 
-    docker run -v "$PASSED:/root/code" -it marshallasch/cdev /bin/bash
+    docker run -v "$PASSED:/code" -it marshallasch/cdev
 }
 ```
 
