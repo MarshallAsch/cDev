@@ -1,4 +1,9 @@
 
+![GitHub](https://img.shields.io/github/license/marshallasch/cDev?style=plastic)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/marshallasch/cdev?style=plastic)
+![Docker Pulls](https://img.shields.io/docker/pulls/marshallasch/cdev?style=plastic)
+
+
 # C Development
 
 This docker container contains a bunch of the C development tools needed to build a program.
@@ -20,7 +25,10 @@ This container is based on Debian and contains:
 To build the container run
 
 ```bash
-$  docker build -t cdev .
+docker build \
+    --build-arg VCS_REF=$(git rev-parse -q --verify HEAD) \
+    --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+    -t cdev .
 ```
 
 ## Usage
