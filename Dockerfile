@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 
 
 LABEL org.opencontainers.version="v1.0.0"
