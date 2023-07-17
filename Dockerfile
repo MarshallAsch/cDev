@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bookworm
 
 
 LABEL org.opencontainers.version="v1.0.0"
